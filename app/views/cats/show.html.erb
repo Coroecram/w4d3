@@ -1,0 +1,20 @@
+<h1><%= @cat.name.upcase%></h1>
+
+<table>
+  <tr>
+    <th>Birth Year: </th>
+    <td> <%=@cat.birth_date %></td>
+  </tr>
+  <tr>
+    <th>Color: </th>
+    <td> <%=@cat.color %></td>
+  </tr>
+  <tr>
+    <th>Sex: </th>
+    <td> <%=@cat.sex %></td>
+  </tr>
+  <tr>
+    <th>Description: </th>
+    <td> <%=@cat.description ||= "A lovely cat" %></td>
+  </tr>
+</table>

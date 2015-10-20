@@ -1,8 +1,8 @@
-<% form_action = (cat.persisted? ? "/cats/#{cat.id}" : "/cats/" ) %>
-<% hidden_input = (cat.persisted? ? (type="hidden" name="_method" value="PATCH").to_s : nil ) %>
+<% form_action = (cat.persisted? ? cat_url(cat.id) : cats_url ) %>
+<% hidden_method = (cat.persisted? ? "PATCH" : "POST" ) %>
 
 <form action="<%=form_action%>" method="POST">
-  <input <%=hidden_input %>>
+  <input type="hidden" name="_method" value="<%=hidden_method%>">
 
   <label for="cat_name">Cat name:</label>
   <input type="text" name="cat[name]" value="<%=cat.name%>">

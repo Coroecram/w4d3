@@ -20,7 +20,7 @@ class CatsController < ApplicationController
     @cat = Cat.new(cat_params)
 
     if @cat.save
-      redirect_to cat_url(@cat.id)
+      redirect_to cat_url(@cat)
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class CatsController < ApplicationController
     @cat = Cat.find(params[:id])
 
     if @cat.update(cat_params)
-      redirect_to cat_url(@cat.id)
+      redirect_to cat_url(@cat)
     else
       render :edit
     end

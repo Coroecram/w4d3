@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :cat_direct, only: [:new, :create]
+
   def new
     @user = User.new
 
@@ -10,8 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:session_token] = @user.session_token
-      redirect_to cats_url
+      log_in!(@user)
     else
       render :new
     end

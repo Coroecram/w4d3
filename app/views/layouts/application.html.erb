@@ -7,7 +7,21 @@
 
 <% if current_user %>
   <%= "Current User: #{current_user.username}" %>
+
+  <form action="<%= session_url %>" method="POST" >
+    <input type="hidden" name="_method" value="Delete">
+
+    <button>Log Out</button>
+  </form>
+
+<% else %>
+  <form action="<%= new_session_url %>" method="GET" >
+    <button>Log In</button>
+  </form>
+
 <% end %>
+
+
 
 <%= yield %>
 

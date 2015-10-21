@@ -3,7 +3,7 @@ require 'date'
 class Cat < ActiveRecord::Base
   validates :sex, inclusion: { in: %w(M F),
     message: "must be M or F."}
-  validates :birth_date, :name, :color, :sex, :description, presence: true
+  validates :birth_date, :name, :color, :sex, :description, :user_id, presence: true
 
   has_many(
     :rental_requests,

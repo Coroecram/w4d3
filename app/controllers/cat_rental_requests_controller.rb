@@ -7,11 +7,14 @@ class CatRentalRequestsController < ApplicationController
 
   def new
     @request = CatRentalRequest.new
+    @request.cat_id = params[:cat_id]
+    # fail
     render :new
   end
 
   def create
     @request = CatRentalRequest.new(rental_params)
+    @request.user_id = current_user.id
 
     if @request.save
       redirect_to cat_url(@request.cat)

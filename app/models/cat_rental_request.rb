@@ -9,6 +9,13 @@ class CatRentalRequest < ActiveRecord::Base
     primary_key: :id
   )
 
+  belongs_to(
+    :requester,
+    class_name: "User",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
   private
 
   def overlapping_requests

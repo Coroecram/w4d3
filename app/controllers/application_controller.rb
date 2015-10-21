@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :current_user, :cat_direct
+  helper_method :current_user
 
   def current_user
     return nil unless session[:session_token]
@@ -17,6 +17,14 @@ class ApplicationController < ActionController::Base
 
   def cat_direct
     redirect_to cats_url if current_user
+  end
+
+  def owner_check
+    current_user.cats.each do |cat|
+      return if cat.id == params[:id].to_i
+    end
+    flash[:message] = "Not your cat to edit!"
+    redirect_to cat_url(params[:id])
   end
 
 end

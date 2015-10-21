@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :rental_requests,
+    class_name: "CatRentalRequest",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
   validates :username, :password_digest, :session_token, presence: true, uniqueness: true
   before_validation :ensure_session_token
 

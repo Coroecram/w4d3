@@ -3,6 +3,7 @@
 
 <form action="<%=form_action%>" method="POST">
   <input type="hidden" name="_method" value="<%=hidden_method%>">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"
 
   <label for="cat_name">Cat name:</label>
   <input type="text" name="cat[name]" value="<%=cat.name%>">

@@ -1,5 +1,7 @@
 class CatRentalRequestsController < ApplicationController
 
+  # before_action :overlapping_requests
+
   def index
     @requests = CatRentalRequest.all
     render json: @requests
@@ -15,7 +17,7 @@ class CatRentalRequestsController < ApplicationController
   def create
     @request = CatRentalRequest.new(rental_params)
     @request.user_id = current_user.id
-    
+
     if @request.save
       redirect_to cat_url(@request.cat)
     else

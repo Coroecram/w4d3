@@ -3,10 +3,10 @@ class CatRentalRequest < ActiveRecord::Base
   # validate :overlapping_requests
 
   belongs_to(
-  :cat,
-  class_name: "Cat",
-  foreign_key: :cat_id,
-  primary_key: :id
+    :cat,
+    class_name: "Cat",
+    foreign_key: :cat_id,
+    primary_key: :id
   )
 
   private

@@ -6,10 +6,10 @@ class Cat < ActiveRecord::Base
   validates :birth_date, :name, :color, :sex, :description, presence: true
 
   has_many(
-  :rental_requests,
-  class_name: "CatRentalRequest",
-  foreign_key: :cat_id,
-  primary_key: :id
+    :rental_requests,
+    class_name: "CatRentalRequest",
+    foreign_key: :cat_id,
+    primary_key: :id
   )
 
   def age

@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
 
     if @user
       @user.reset_session_token!
+      session[:session_token] = @user.session_token
       redirect_to cats_url
     else
       @user = User.new(username: params[:user][:username])
@@ -20,4 +21,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    if current_user
+      current_user.reset_session_token!
+      session[:session_token] = nil
+    end
+  end
 end

@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      @user.reset_session_token!
       session[:session_token] = @user.session_token
       redirect_to cats_url
     else
